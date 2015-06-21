@@ -12,3 +12,7 @@
 4. Check your firewall settings if needed
 
 5. Start solution
+
+Keywords
+-
+multilayered architecture, WCF, dependency injection, IoC, Ninject, client-server, WPF, MVVM, modal dialog
