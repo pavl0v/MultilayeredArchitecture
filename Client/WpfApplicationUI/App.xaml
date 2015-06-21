@@ -1,0 +1,18 @@
+﻿<Application x:Class="WpfApplicationUI.App"
+             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:DialogOK="clr-namespace:WpfApplicationUI.Dialogs.DialogOK"
+             xmlns:DialogYesNo="clr-namespace:WpfApplicationUI.Dialogs.DialogYesNo"
+             xmlns:DialogItem="clr-namespace:WpfApplicationUI.Dialogs.DialogItem">
+    <Application.Resources>
+        <DataTemplate DataType="{x:Type DialogOK:DialogOKViewModel}">
+            <DialogOK:DialogOKView></DialogOK:DialogOKView>
+        </DataTemplate>
+        <DataTemplate DataType="{x:Type DialogYesNo:DialogYesNoViewModel}">
+            <DialogYesNo:DialogYesNoView></DialogYesNo:DialogYesNoView>
+        </DataTemplate>
+        <DataTemplate DataType="{x:Type DialogItem:DialogItemViewModel}">
+            <DialogItem:DialogItemView></DialogItem:DialogItemView>
+        </DataTemplate>
+    </Application.Resources>
+</Application>

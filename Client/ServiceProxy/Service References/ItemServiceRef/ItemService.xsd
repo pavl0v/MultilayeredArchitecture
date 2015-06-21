@@ -1,0 +1,83 @@
+<?xml version="1.0" encoding="utf-8"?>
+<xs:schema xmlns:tns="http://schemas.datacontract.org/2004/07/WcfServiceLayer.Contracts" elementFormDefault="qualified" targetNamespace="http://schemas.datacontract.org/2004/07/WcfServiceLayer.Contracts" xmlns:xs="http://www.w3.org/2001/XMLSchema">
+  <xs:complexType name="ResponseOfTypeItem">
+    <xs:annotation>
+      <xs:appinfo>
+        <GenericType Name="ResponseOfType{0}" Namespace="http://schemas.datacontract.org/2004/07/WcfServiceLayer.Contracts" xmlns="http://schemas.microsoft.com/2003/10/Serialization/">
+          <GenericParameter Name="Item" Namespace="http://schemas.datacontract.org/2004/07/WcfServiceLayer.Contracts" />
+        </GenericType>
+      </xs:appinfo>
+    </xs:annotation>
+    <xs:sequence>
+      <xs:element minOccurs="0" name="IsSuccessful" type="xs:boolean" />
+      <xs:element minOccurs="0" name="Message" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="Method" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="Result" nillable="true" type="tns:Item" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="ResponseOfTypeItem" nillable="true" type="tns:ResponseOfTypeItem" />
+  <xs:complexType name="Item">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="ID" type="xs:long" />
+      <xs:element minOccurs="0" name="Name" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="ParameterA" type="xs:double" />
+      <xs:element minOccurs="0" name="ParameterB" type="xs:double" />
+      <xs:element minOccurs="0" name="Product" type="xs:double" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="Item" nillable="true" type="tns:Item" />
+  <xs:complexType name="ResponseOfTypeArrayOfItem">
+    <xs:annotation>
+      <xs:appinfo>
+        <GenericType Name="ResponseOfType{0}" Namespace="http://schemas.datacontract.org/2004/07/WcfServiceLayer.Contracts" xmlns="http://schemas.microsoft.com/2003/10/Serialization/">
+          <GenericParameter Name="ArrayOfItem" Namespace="http://schemas.datacontract.org/2004/07/WcfServiceLayer.Contracts" />
+        </GenericType>
+      </xs:appinfo>
+    </xs:annotation>
+    <xs:sequence>
+      <xs:element minOccurs="0" name="IsSuccessful" type="xs:boolean" />
+      <xs:element minOccurs="0" name="Message" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="Method" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="Result" nillable="true" type="tns:ArrayOfItem" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="ResponseOfTypeArrayOfItem" nillable="true" type="tns:ResponseOfTypeArrayOfItem" />
+  <xs:complexType name="ArrayOfItem">
+    <xs:sequence>
+      <xs:element minOccurs="0" maxOccurs="unbounded" name="Item" nillable="true" type="tns:Item" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="ArrayOfItem" nillable="true" type="tns:ArrayOfItem" />
+  <xs:complexType name="ResponseOfTypeboolean">
+    <xs:annotation>
+      <xs:appinfo>
+        <GenericType Name="ResponseOfType{0}" Namespace="http://schemas.datacontract.org/2004/07/WcfServiceLayer.Contracts" xmlns="http://schemas.microsoft.com/2003/10/Serialization/">
+          <GenericParameter Name="boolean" Namespace="http://www.w3.org/2001/XMLSchema" />
+        </GenericType>
+      </xs:appinfo>
+    </xs:annotation>
+    <xs:sequence>
+      <xs:element minOccurs="0" name="IsSuccessful" type="xs:boolean" />
+      <xs:element minOccurs="0" name="Message" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="Method" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="Result" type="xs:boolean" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="ResponseOfTypeboolean" nillable="true" type="tns:ResponseOfTypeboolean" />
+  <xs:complexType name="ResponseOfTypelong">
+    <xs:annotation>
+      <xs:appinfo>
+        <GenericType Name="ResponseOfType{0}" Namespace="http://schemas.datacontract.org/2004/07/WcfServiceLayer.Contracts" xmlns="http://schemas.microsoft.com/2003/10/Serialization/">
+          <GenericParameter Name="long" Namespace="http://www.w3.org/2001/XMLSchema" />
+        </GenericType>
+      </xs:appinfo>
+    </xs:annotation>
+    <xs:sequence>
+      <xs:element minOccurs="0" name="IsSuccessful" type="xs:boolean" />
+      <xs:element minOccurs="0" name="Message" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="Method" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="Result" type="xs:long" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="ResponseOfTypelong" nillable="true" type="tns:ResponseOfTypelong" />
+</xs:schema>

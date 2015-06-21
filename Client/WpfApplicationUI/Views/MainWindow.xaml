@@ -1,0 +1,62 @@
+﻿<Window x:Class="WpfApplicationUI.Views.MainWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:converters="clr-namespace:WpfApplicationUI.Converters"
+        Title="MainWindow" Height="350" Width="525" WindowStartupLocation="CenterScreen">
+    <Window.Resources>
+        <converters:SumABConverter x:Key="SumAB"></converters:SumABConverter>
+    </Window.Resources>
+    <Grid>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="*"></RowDefinition>
+            <RowDefinition Height="Auto"></RowDefinition>
+        </Grid.RowDefinitions>
+
+        <DataGrid Grid.Row="0" ItemsSource="{Binding Items}" AutoGenerateColumns="False" Margin="2" CanUserAddRows="False" CanUserDeleteRows="False" CanUserResizeRows="False" HeadersVisibility="Column" IsReadOnly="True" SelectionMode="Single">
+            <DataGrid.CellStyle>
+                <Style TargetType="{x:Type DataGridCell}">
+                    <Style.Triggers>
+                        <Trigger Property="IsSelected" Value="True">
+                            <Setter Property="BorderThickness" Value="1"></Setter>
+                            <Setter Property="BorderBrush" Value="Transparent"></Setter>
+                        </Trigger>
+                    </Style.Triggers>
+                </Style>
+            </DataGrid.CellStyle>
+            <DataGrid.Columns>
+                <DataGridTextColumn Header="Name" Binding="{Binding Name}" Width="*" />
+                <DataGridTextColumn Header="A" Binding="{Binding ParameterA}" />
+                <DataGridTextColumn Header="B" Binding="{Binding ParameterB}" />
+                <DataGridTextColumn Header="A*B" Binding="{Binding Product}" />
+                <!--<DataGridTextColumn Header="SumAB" Binding="{Binding ., Converter={StaticResource ResourceKey=SumAB}}">-->
+                <DataGridTextColumn Header="A+B">
+                    <DataGridTextColumn.Binding>
+                        <MultiBinding Converter="{StaticResource ResourceKey=SumAB}">
+                            <Binding Path="ParameterA"></Binding>
+                            <Binding Path="ParameterB"></Binding>
+                        </MultiBinding>
+                    </DataGridTextColumn.Binding>
+                </DataGridTextColumn>
+                <DataGridTemplateColumn Width="30">
+                    <DataGridTemplateColumn.CellTemplate>
+                        <DataTemplate>
+                            <Button Content="..." Command="{Binding Path=DataContext.EditItemCommand, RelativeSource={RelativeSource Mode=FindAncestor, AncestorType={x:Type Window}}}" CommandParameter="{Binding .}"></Button>
+                        </DataTemplate>
+                    </DataGridTemplateColumn.CellTemplate>
+                </DataGridTemplateColumn>
+                <DataGridTemplateColumn Width="30">
+                    <DataGridTemplateColumn.CellTemplate>
+                        <DataTemplate>
+                            <Button Content="X" Command="{Binding Path=DataContext.DeleteItemCommand, RelativeSource={RelativeSource Mode=FindAncestor, AncestorType={x:Type Window}}}" CommandParameter="{Binding .}"></Button>
+                        </DataTemplate>
+                    </DataGridTemplateColumn.CellTemplate>
+                </DataGridTemplateColumn>
+            </DataGrid.Columns>
+        </DataGrid>
+
+        <StackPanel Orientation="Horizontal" Grid.Row="1" HorizontalAlignment="Right">
+            <Button Content="New" Command="{Binding AddItemCommand}" Height="22" Width="100" Margin="2"></Button>
+            <Button Content="Refresh" Command="{Binding RefreshItemsCommand}" Height="22" Width="100" Margin="2"></Button>
+        </StackPanel>
+    </Grid>
+</Window>
