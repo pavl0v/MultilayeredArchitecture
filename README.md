@@ -1,4 +1,4 @@
-# ApplicationLayerArchitecture
+# MultilayeredArchitecture
 1. Restore NuGet packages by managing NuGet packages for solution
 
 2. Set multiple startup projects in solution properties:
@@ -15,4 +15,4 @@
 
 Keywords
 -
-multilayered architecture, WCF, dependency injection, IoC, Ninject, client-server, WPF, MVVM, modal dialog
+multilayered architecture, WCF, dependency injection, IoC, Ninject, client-server, WPF, MVVM, modal dialog, Entity Framework, SQL Server Compact, SQLite
